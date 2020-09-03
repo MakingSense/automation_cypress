@@ -18,5 +18,5 @@ npx cypress open
 ```
 OR
 ```
-./node?modules/.bin/cypress run
+./node_modules/.bin/cypress run
 ```
