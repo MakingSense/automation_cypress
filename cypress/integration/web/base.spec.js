@@ -1,29 +1,25 @@
 describe('Base Testing Suite', () => {
-    
-    before('Basic configuration', () => {
+    /**
+     * This method is executed before every test
+     */
+    beforeEach('Basic configuration', () => {
       cy.muteXHR();
     });
     
+    /**
+     * Test to validate that the MakingSense's twitter page is correctly displayed
+     */
     it('Visit the Making Sense\'s homepage', () => {
-        cy.visit('/')
+      cy.visit('/MakingSenseApps')
         
-        // Verifying that the Making Sense logo is displayed
-        cy.get('#main-header > .wrapper > #logo > a > #Layer_1')
-          .should('be.visible')
-        
-        // Verifying that the main header is displayed
-        cy.get('h1')
-          .should('contain.text', "Software Development  for a great User Experience")
+      cy.get('.r-1wtj0ep > .css-4rbku5 > .r-1twgtwe')
+        .should('be.visible')
 
-        cy.get('.menu--show-mobile')
-          .click()
+      cy.get('.r-1g94qm0 > :nth-child(1) > .r-1ny4l3l > .r-1awozwy > .r-jwli3a > :nth-child(1) > .css-901oao')
+        .should('contain.text', 'Making Sense')
 
-        cy.get('.modal--mobile-menu > .content--table-center > :nth-child(1) > :nth-child(1) > a')
-          .should('be.visible')
-          .click()
-          
-        cy.get('h1')
-          .should('contain.text', 'Our passion motivates our work')
-
+      cy.get('[data-testid=UserDescription] > .css-901oao')
+        .should('be.visible')
+        .and('contain.text', 'Innovative Apps and Software. We deliver custom software that our clients and their users rave about!')
     });
 });
